@@ -3,9 +3,9 @@
 <h4><%= @user.email %></h1>
 
 
-<ul class="flex">
-<li><%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
-<li><%= link_to "Delete", user_path(@user), data: {
+<ul class="d-flex list-unstyled ">
+    <li class="p-2"><%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
+    <li class="p-2"><%= link_to "Delete", user_path(@user), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
                   }, class: 'btn btn-primary' %></li>
