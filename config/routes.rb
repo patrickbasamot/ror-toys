@@ -3,4 +3,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+
+  #Resourceful Routing
+  resources :users, only: [:index, :show, :new,:create, :edit,:update, :destroy]
+
+ root "users#index"
 end
