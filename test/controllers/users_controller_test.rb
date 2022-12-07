@@ -11,16 +11,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     #get static_pages_help_url
     #assert_response :success
     #end
-
-    test "index" do
-      get "/"
-    assert_response :success
-    end
-
-    test "create" do
-      get '/users/new'
-    assert_response :success
-    end
-
   
+    test "index" do
+      get root_path
+    assert_response :success
+    end
+
+    test "create new user" do
+      user = User.new(name:"asdasda",email:"qwewqeqw")
+      assert user.save, "Something is missing."
+    end
 end
