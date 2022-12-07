@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
 
   #Resourceful Routing
-  resources :users, only: [:index, :show, :new,:create, :edit,:update, :destroy]
+  resources :users, only: [:index, :show, :new,:create, :edit,:update, :destroy] do
+    resources :microposts
+  end
 
  root "users#index"
+ 
 end

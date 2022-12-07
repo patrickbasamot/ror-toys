@@ -1,12 +1,35 @@
-<h1>User Information</h1>
-<h3><%= @user.name %></h1>
-<h4><%= @user.email %></h1>
+<h3><%= @user.name%></h4>
 
 
-<ul class="d-flex list-unstyled ">
-    <li class="p-2"><%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %>
-    <li class="p-2"><%= link_to "Delete", user_path(@user), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  }, class: 'btn btn-primary' %></li>
-</ul>
+<h4>Posts</h4>
+<% @user.microposts.each do |micropost| %>
+<hr>
+  <button class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-custom-class="custom-tooltip"
+        data-bs-title="This top tooltip is themed via CSS variables.">
+    <%= micropost.title %>
+  </button>
+  <p>
+    <%= micropost.body %>
+  </p>
+  
+<% end %>
+
+<h2>Add a post:</h2>
+<%= form_with model: [ @user, @user.microposts.build ] do |form| %>
+<div class="mb-3">
+  <p>
+    <%= form.label :Title, "Title:" %><br>
+    <%= form.text_field :title, class: "form-control" %>
+  </p>
+</div>
+<div class="mb-3">
+  <p>
+    <%= form.label :Body, "Body:" %><br>
+    <%= form.text_area :body, class: "form-control" %>
+  </p>
+</div> 
+  <p>
+    <%= form.submit :Submit, class: "btn btn-primary" %>
+  </p>
+<% end %>
