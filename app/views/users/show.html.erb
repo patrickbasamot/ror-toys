@@ -1,3 +1,6 @@
+<%provide(:title, "User Info")%>
+
+<title><%= full_title(yield(:title))%></title>
 <h3><%= @user.name%></h4>
 
 
@@ -30,6 +33,6 @@
   </p>
 </div> 
   <p>
-    <%= form.submit :Submit, class: "btn btn-primary" %>
+    <%= form.submit :Submit ,class: "btn btn-primary" %>
   </p>
 <% end %>
