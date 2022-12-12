@@ -29,33 +29,22 @@ module UsersHelper
 def display_standard_table(users)
     columns = ["Name","Option"]
     thead = content_tag :thead do
-      content_tag :tr do
-       columns.collect {|column| content_tag(:th,column, scope: 'col')}.join().html_safe
-      end
-    end
-   
-    # tbody = content_tag :tbody do
-    #  users.collect { |elem|
-    #    content_tag :tr do
-    #      columns.collect { |column|
-    #          concat content_tag(:td, elem.name)
-    #          concat content_tag(:td, elem.email)
-    #      }.to_s.html_safe
-    #    end
-   
-    #  }.join().html_safe
-    # end
-   
-    tbody = content_tag :tbody do
-        content_tag(:tr) do
-            users.map do |item|
-              concat(content_tag(:td, item.name))
-            end
+        content_tag :tr do
+         columns.collect {|column|  concat content_tag(:th,column,scope: 'col')}.join().html_safe
         end
-    end
-    content_tag :table, thead.concat(tbody)
-   
-   end
-   
-   
+      end
+     
+      tbody = content_tag :tbody do
+       users.collect { |user|
+         content_tag :tr do
+           columns.collect { |column|
+               concat content_tag(:td, user.name)
+           }.to_s.html_safe
+         end
+       }.join().html_safe
+      end
+     
+      content_tag :table, thead.concat(tbody)
+     
+     end 
 end

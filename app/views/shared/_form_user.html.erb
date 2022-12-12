@@ -19,6 +19,16 @@
 </div>
 
 <div class="mb-3">
+    <%= form.label :Email, "Password:"%>
+    <%= form.password_field :email, class: "form-control"%>
+</div>
+
+<div class="mb-3">
+    <%= form.label :Password, "Password Confirmation:"%>
+    <%= form.email_field :email, class: "form-control"%>
+</div>
+
+<div class="mb-3">
     <%= form.submit :Submit, class: "btn btn-primary"%>
 </div>
 <% end %>

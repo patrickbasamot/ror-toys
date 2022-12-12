@@ -9,6 +9,9 @@ gem "rails", "~> 7.0.4"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
+gem 'rails-controller-testing'
+
+gem 'bootstrap-sass', '3.4.1'
 # Use sqlite3 as the database for Active Record
 #gem "sqlite3", "~> 1.4"
 gem "pg"
@@ -43,7 +46,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
