@@ -1,30 +1,5 @@
 module UsersHelper    
-
-    def users_list(users)
-        # users.each do |user|
-        # add_micropost = link_to('Add Micropost', Rails.application.routes.url_helpers.user_path(user),class: "btn btn-primary")
-        # edit = link_to('Edit', Rails.application.routes.url_helpers.edit_user_path(user), class:"btn btn-primary")
-        # destroy = link_to('Destroy',Rails.application.routes.url_helpers.edit_user_path(user) ,data: {
-            # turbo_method: :delete,
-            # turbo_confirm: "Are you sure?"}, class: "btn btn-primary")
-        # return "<td>#{user.name}</td>
-                # <td>#{add_micropost} #{edit} #{destroy}</td>"
-                # .html_safe
-           
-                content_tag(:ul) do
-                    users.map do |item|
-                      concat(content_tag(:li, item.name))
-                    end
-                end
-    end
-
-   def table_identity
-    table_head = ["Name","Email"]
-    content_tag(:table,
-        content_tag(:thead,
-            content_tag(:tr,
-             (content_tag(:th,"Name") + content_tag(:th,"Email")))),content_tag(:tbody))
-    end
+   
 
 def display_standard_table(users)
     columns = ["Name","Option"]
@@ -43,8 +18,13 @@ def display_standard_table(users)
          end
        }.join().html_safe
       end
-     
       content_tag :table, thead.concat(tbody)
-     
      end 
+
+     def gravatar_for(user, options = { size: 80 })
+      size = options[:size]
+      gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+      gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
+      image_tag(gravatar_url, alt: user.name, class: "gravatar")
+      end
 end
