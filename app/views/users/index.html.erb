@@ -1,36 +1,18 @@
-<div class="d-flex flex-row justify-content-between mb-3 "><h1 class="text-center">Users</h1>
-    <div>
-        <%= link_to "Create User", new_user_path, class: "btn btn-primary" %>
-    </div>
-</div>
-<div class="alert alert-success">
-        <%= flash.notice %>
-</div>
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+<ul class="users">
+<% @users.each do |user| %>
+<li>
+<%= gravatar_for user, size: 50 %>
+<%= link_to user.name, user %>
+</li>
+<% end %>
+</ul>
 
-<table class="table">
-  <thead>
-  
-    <tr>
-      <th scope="col">User</th>
-      <th scope="col">Options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %> 
-    <tr>
-       <td><%= user.name%></td>
-       <td><%= link_to "Add Micropost",user_path(user.id), class:"btn btn-primary" %> <%= link_to "Edit", edit_user_path(user.id), class: "btn btn-primary" %> <%= link_to "Delete", user_path(user.id), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  }, class: 'btn btn-primary' %></td>
-    </tr>
-    <% end %>
-    <tr>
-    </tr>
-    
-  </tbody>
-</table>
-
-<%= display_standard_table(@users)%>
+<%
+=begin%>
+ <%= display_standard_table(@users)%> 
+<%
+=end%>
 
     
